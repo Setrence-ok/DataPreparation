@@ -4,18 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/DataPreparation.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/profiles_settings.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/autokz2019.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/func.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/func6.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/func7.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/func8.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/progect.py" afterDir="false" />
+    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="First commit">
+      <change afterPath="$PROJECT_DIR$/сourse_project/region_area.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/сourse_project/type_conversions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/func8.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/transmission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/progect.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/progect.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +26,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Setrence-ok&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Setrence-ok/DataPreparation.git&quot;,
+    &quot;accountId&quot;: &quot;eba4a160-ba35-4a9a-8334-ced027c6f19f&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
 }</component>
@@ -49,7 +55,8 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
     "git-widget-placeholder": "main",
-    "last_opened_file_path": "C:/Users/User/PycharmProjects/DataPreparation/сourse_project"
+    "last_opened_file_path": "C:/Users/User/PycharmProjects/DataPreparation/сourse_project",
+    "settings.editor.selected.configurable": "preferences.lookFeel"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -72,6 +79,30 @@
       <option name="presentableId" value="Default" />
       <updated>1764097215754</updated>
     </task>
+    <task id="LOCAL-00001" summary="First commit">
+      <option name="closed" value="true" />
+      <created>1764522917179</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1764522917179</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="First commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="First commit" />
   </component>
 </project>

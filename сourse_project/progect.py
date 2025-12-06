@@ -5,7 +5,9 @@ import pycountry
 from func import *
 from func6 import *
 from func7 import *
-from func8 import *
+from region_area import *
+from transmission import *
+from type_conversions import *
 
 # Загрузка данных
 df = pd.read_csv('autokz2019.csv', sep=';', decimal=',', thousands=' ')
@@ -44,38 +46,47 @@ df = df.dropna(how='all')
 df = df.drop_duplicates()
 
 #print("\nПропущенные значения:")
-#print(df.isnull().sum())
+print(df.isnull().sum())
 df['country_of_origin'] = df['country_of_origin'].apply(country_to_alpha3)
 df['fuel_type'] = df['fuel_type'].apply(encode_fuel_type)
 df['drive_type'] = df['drive_type'].apply(standardize_drive_type)
 
 #analyze_numeric_anomalies(df)
-#df = clean_numeric_columns(df)
+df = clean_numeric_columns(df)
 #analyze_after_cleaning(df)
 #analyze_special_cases(df)
-#df = final_numeric_conversions(df)
+df = final_numeric_conversions(df)
 
 #analyze_date_components(df)
-#df = create_sale_date_column(df)
+df = create_sale_date_column(df)
 #analyze_created_dates(df)
-#df = remove_original_columns(df)
-#df = final_date_check(df)
+df = remove_original_columns(df)
+df = final_date_check(df)
 #analyze_company_names(df)
 
-#df = clean_company_names(df)
+df = clean_company_names(df)
 #analyze_changes(df)
 #analyze_mercur_auto(df)
-#df = final_company_cleaning(df)
-#final_company_check(df)
+df = final_company_cleaning(df)
+final_company_check(df)
 
 #analyze_engine_volume(df)
-#df = apply_engine_cleaning(df)
+df = apply_engine_cleaning(df)
 #analyze_cleaning_changes(df)
 #analyze_special_cases(df)
-#df = final_engine_cleaning(df)
+df = final_engine_cleaning(df)
 
-print(f'Регион: {df['region'].unique()}')
-#print(f'Область: {df['area'].unique()}')
+df['area'] = df.apply(correct_area, axis=1)
+df['area'] = df['area'].str.title()
+df['region'] = df['region'].str.title()
+df['region'] = df.apply(correct_region, axis=1)
+
+df['transmission_box'] = df['transmission_box'].apply(classify_transmission_simple)
+
+df = final_data_type_conversions(df)
+
+print(df.info())
+
 
 
 
