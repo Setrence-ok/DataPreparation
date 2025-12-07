@@ -5,7 +5,7 @@ import pandas as pd
 
 def classify_transmission_simple(transmission):
     if pd.isna(transmission):
-        return np.nan
+        return 'Unknown'
 
     transmission = str(transmission).upper()
 
@@ -32,4 +32,4 @@ def classify_transmission_simple(transmission):
         if re.match(pattern, transmission, re.IGNORECASE):
             return 'Механика'
 
-    return np.nan
+    return 'Unknown'

@@ -1,8 +1,6 @@
 import pandas as pd
 import numpy as np
-from datetime import datetime
-import pycountry
-
+import re
 
 def analyze_engine_volume(df):
     """
@@ -70,7 +68,6 @@ def clean_engine_volume(value, brand=None, model=None):
         return np.nan
 
     # 4. Извлекаем числовую часть (первое число)
-    import re
     numbers = re.findall(r'\d+\.?\d*', cleaned)
     if not numbers:
         return np.nan

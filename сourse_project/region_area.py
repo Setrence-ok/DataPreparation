@@ -11,6 +11,8 @@ def correct_area(row):
         return 'Акмолинская область'
     elif region == 'Экспорт область':
         return np.nan
+    elif region is None:
+        return np.nan
     else:
         return region
 
@@ -19,6 +21,8 @@ def correct_region(row):
 
     # Если область указана как город
     if region == 'Экспорт':
+        return np.nan
+    elif region is None:
         return np.nan
     else:
         return region
