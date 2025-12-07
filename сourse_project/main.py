@@ -9,6 +9,8 @@ from type_conversions import *
 from quan_price_sale import *
 from drive_type import *
 from year_of_release  import *
+from EDA import *
+from save import *
 
 # Загрузка данных
 df = pd.read_csv('autokz2019.csv', sep=';', decimal=',', thousands=' ')
@@ -90,21 +92,10 @@ df = clean_year_column(df)
 df[['price_USD', 'sale_USD']] = df[['price_USD', 'sale_USD']].round(2)
 df = df.dropna(subset=['year_of_release', 'area', 'engine_volume'])
 
-# После всех обработок данных
-output_filename = 'processed_data.csv'
+eda(df)
 
-# Сохраняем DataFrame
-try:
-    df.to_csv(output_filename, index=False, encoding='utf-8-sig')
-    print(f"✅ Результат сохранён в файл: {output_filename}")
-    print(f"   Всего записей: {len(df)}")
+save(df)
 
-    # Дополнительная информация
-    print("\n📊 Обзор данных:")
-    print(df.info())
-
-except Exception as e:
-    print(f"❌ Ошибка при сохранении: {e}")
 
 
 

@@ -4,19 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="Complete all tasks">
-      <change afterPath="$PROJECT_DIR$/сourse_project/country_of_origin.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/drive_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/fuel_type.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/quan_price_sale.py" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/сourse_project/year_of_release.py" afterDir="false" />
+    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="End of prepare">
+      <change afterPath="$PROJECT_DIR$/сourse_project/EDA.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/func.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/sale_date.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/func6.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/dealer_name.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/func7.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/engine_volume.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/progect.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/progect.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/region_area.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/region_area.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/transmission.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/transmission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/progect.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -59,6 +50,7 @@
     "Python.func.executor": "Run",
     "Python.func6.executor": "Run",
     "Python.func7.executor": "Run",
+    "Python.main.executor": "Run",
     "Python.progect.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "RunOnceActivity.git.unshallow": "true",
@@ -103,7 +95,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765024159063</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="End of prepare">
+      <option name="closed" value="true" />
+      <created>1765110609004</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1765110609004</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -120,6 +120,7 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="First commit" />
     <MESSAGE value="Complete all tasks" />
-    <option name="LAST_COMMIT_MESSAGE" value="Complete all tasks" />
+    <MESSAGE value="End of prepare" />
+    <option name="LAST_COMMIT_MESSAGE" value="End of prepare" />
   </component>
 </project>
