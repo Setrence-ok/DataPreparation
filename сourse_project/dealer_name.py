@@ -79,21 +79,11 @@ def clean_company_names(df):
     Очищает и стандартизирует названия компаний
     """
     if 'dealer_name' not in df.columns:
-        print("Столбец dealer_name не найден")
         return df
     # Сохраняем оригинальные названия для анализа
     df['dealer_name_original'] = df['dealer_name']
     # Применяем стандартизацию
     df['dealer_name_cleaned'] = df['dealer_name'].apply(standardize_company_name)
-    # Анализируем результаты
-    original_count = df['dealer_name_original'].nunique()
-    cleaned_count = df['dealer_name_cleaned'].nunique()
-    reduction = original_count - cleaned_count
-
-    print(f"РЕЗУЛЬТАТЫ СТАНДАРТИЗАЦИИ:")
-    print(f"Было уникальных названий: {original_count}")
-    print(f"Стало уникальных названий: {cleaned_count}")
-    print(f"Удалено дубликатов: {reduction}")
 
     return df
 
@@ -106,7 +96,4 @@ def final_company_cleaning(df):
     df['dealer_name'] = df['dealer_name_cleaned']
     # Удаляем временные столбцы
     df = df.drop(columns=['dealer_name_cleaned', 'dealer_name_original'])
-
-    print("Очищенные названия компаний:")
-    print(df['dealer_name'].value_counts().head(15))
     return df

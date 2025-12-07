@@ -63,18 +63,6 @@ def apply_engine_cleaning(df):
         lambda row: clean_engine_volume(row['engine_volume'], row.get('brand'), row.get('model')),
         axis=1
     )
-
-    # Анализ результатов
-    original_non_null = df['engine_volume_original'].notna().sum()
-    cleaned_non_null = df['engine_volume_cleaned'].notna().sum()
-    cleaned_count = original_non_null - cleaned_non_null
-
-    print(f"РЕЗУЛЬТАТЫ ОЧИСТКИ:")
-    print(f"Было непустых значений: {original_non_null}")
-    print(f"Стало непустых значений: {cleaned_non_null}")
-    print(f"Потеряно значений при очистке: {cleaned_count}")
-    print(f"Процент сохраненных: {cleaned_non_null / original_non_null * 100:.1f}%")
-
     return df
 
 
@@ -97,19 +85,10 @@ def final_engine_cleaning(df):
             return row['engine_volume']
 
         df['engine_volume'] = df.apply(fill_with_brand_median, axis=1)
-
-    print(f"Финальная статистика объема двигателя (округлено до 0.1):")
-    print(f"Пропуски: {df['engine_volume'].isnull().sum()}")
-    print(f"Мин: {df['engine_volume'].min():.1f}")
-    print(f"Макс: {df['engine_volume'].max():.1f}")
-    print(f"Медиана: {df['engine_volume'].median():.1f}")
-
     # Проверяем что все значения округлены правильно
     unique_decimals = set()
     for val in df['engine_volume'].dropna():
         decimal_part = val - int(val) if val != 0 else 0
         if decimal_part > 0:
             unique_decimals.add(round(decimal_part, 2))
-
-    print(f"Уникальные десятичные части: {sorted(unique_decimals)}")
     return df

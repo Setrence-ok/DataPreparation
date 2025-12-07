@@ -63,9 +63,6 @@ def create_sale_date_column(df):
     successful_dates = df['sale_date'].notna().sum()
     failed_dates = df['sale_date'].isna().sum()
 
-    print(f"Успешно создано дат: {successful_dates}")
-    print(f"Не удалось создать: {failed_dates}")
-
     if failed_dates > 0:
         print("Проблемные записи:")
         problem_rows = df[df['sale_date'].isna()][['year', 'month']].head()
