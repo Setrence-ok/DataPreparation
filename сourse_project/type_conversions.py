@@ -1,6 +1,4 @@
 import pandas as pd
-import numpy as np
-
 
 def final_data_type_conversions(df):
     """
@@ -10,7 +8,7 @@ def final_data_type_conversions(df):
     # Создаем копию датафрейма, чтобы не изменять оригинал
     df_transformed = df.copy()
 
-    # 2. Преобразование категориальных столбцов
+    # Преобразование категориальных столбцов
     categorical_columns = [
         'fuel_type',
         'transmission_box',

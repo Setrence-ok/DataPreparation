@@ -7,26 +7,20 @@ import warnings
 warnings.filterwarnings('ignore')
 
 def eda(df):
-
     # Настройка отображения
     plt.style.use('seaborn-v0_8-darkgrid')
     sns.set_palette("husl")
     pd.set_option('display.max_columns', None)
     pd.set_option('display.float_format', lambda x: '%.2f' % x)
 
-    # Загрузка данных (предполагаем, что df уже очищен)
-    # df = pd.read_csv('cleaned_data.csv')
-
     # Создание дополнительных признаков для анализа
     df['sale_month'] = df['sale_date'].dt.month
     df['sale_quarter'] = df['sale_date'].dt.quarter
     df['car_age'] = 2019 - df['year_of_release']
-    df['price_per_unit'] = df['price_USD'] / df['quantity']
-    df['sale_per_unit'] = df['sale_USD'] / df['quantity']
 
-    # 1. ОБЩИЙ ОБЗОР РЫНКА
+    # ОБЩИЙ ОБЗОР РЫНКА
     print("=" * 60)
-    print("1. ОБЩИЙ ОБЗОР РЫНКА")
+    print("ОБЩИЙ ОБЗОР РЫНКА")
     print("=" * 60)
 
     total_sales_usd = df['sale_USD'].sum()
@@ -42,11 +36,7 @@ def eda(df):
     print(f"Количество уникальных дилеров: {df['dealer_name'].nunique()}")
     print(f"Количество уникальных марок: {df['brand'].nunique()}")
 
-    # 2. ДИНАМИКА ПРОДАЖ ПО МЕСЯЦАМ
-    print("\n" + "=" * 60)
-    print("2. ДИНАМИКА ПРОДАЖ ПО МЕСЯЦАМ")
-    print("=" * 60)
-
+    # ДИНАМИКА ПРОДАЖ ПО МЕСЯЦАМ
     monthly_stats = df.groupby('sale_month').agg({
         'sale_USD': 'sum',
         'quantity': 'sum',
@@ -86,7 +76,7 @@ def eda(df):
     plt.tight_layout()
     plt.show()
 
-    # 3. ТОП-10 МАРОК ПО ПРОДАЖАМ
+    # ТОП-10 МАРОК ПО ПРОДАЖАМ
     print("\n" + "=" * 60)
     print("3. ТОП-10 МАРОК ПО ПРОДАЖАМ")
     print("=" * 60)
@@ -118,13 +108,12 @@ def eda(df):
     plt.tight_layout()
     plt.show()
 
-    # 4. АНАЛИЗ «МЕРКУР АВТО»
+    # АНАЛИЗ «МЕРКУР АВТО»
     print("\n" + "=" * 60)
-    print("4. АНАЛИЗ ПОЗИЦИИ «МЕРКУР АВТО»")
+    print("АНАЛИЗ ПОЗИЦИИ «МЕРКУР АВТО»")
     print("=" * 60)
 
     merkur_data = df[df['dealer_name'] == 'Mercur Auto']
-    other_data = df[df['dealer_name'] != 'Mercur Auto']
 
     if len(merkur_data) > 0:
         merkur_sales_usd = merkur_data['sale_USD'].sum()
@@ -201,9 +190,9 @@ def eda(df):
     else:
         print("Данные по «Меркур Авто» не найдены в датасете")
 
-    # 5. ГЕОГРАФИЧЕСКИЙ АНАЛИЗ
+    # ГЕОГРАФИЧЕСКИЙ АНАЛИЗ
     print("\n" + "=" * 60)
-    print("5. ГЕОГРАФИЧЕСКИЙ АНАЛИЗ")
+    print("ГЕОГРАФИЧЕСКИЙ АНАЛИЗ")
     print("=" * 60)
 
     if 'region' in df.columns:
@@ -235,11 +224,7 @@ def eda(df):
         plt.tight_layout()
         plt.show()
 
-    # 6. АНАЛИЗ ТЕХНИЧЕСКИХ ХАРАКТЕРИСТИК
-    print("\n" + "=" * 60)
-    print("6. АНАЛИЗ ТЕХНИЧЕСКИХ ХАРАКТЕРИСТИК")
-    print("=" * 60)
-
+    # АНАЛИЗ ТЕХНИЧЕСКИХ ХАРАКТЕРИСТИК
     fig, axes = plt.subplots(2, 2, figsize=(14, 10))
 
     # Распределение коробок передач
@@ -274,9 +259,9 @@ def eda(df):
     plt.tight_layout()
     plt.show()
 
-    # 7. КОРРЕЛЯЦИОННЫЙ АНАЛИЗ
+    # КОРРЕЛЯЦИОННЫЙ АНАЛИЗ
     print("\n" + "=" * 60)
-    print("7. КОРРЕЛЯЦИОННЫЙ АНАЛИЗ")
+    print("КОРРЕЛЯЦИОННЫЙ АНАЛИЗ")
     print("=" * 60)
 
     # Выбираем числовые колонки для корреляции
@@ -297,9 +282,9 @@ def eda(df):
         unique_pairs = unique_pairs[unique_pairs['level_0'] != unique_pairs['level_1']]
         print(unique_pairs.head(10))
 
-    # 8. ТОП-10 МОДЕЛЕЙ ПО ПРОДАЖАМ
+    # ТОП-10 МОДЕЛЕЙ ПО ПРОДАЖАМ
     print("\n" + "=" * 60)
-    print("8. ТОП-10 МОДЕЛЕЙ ПО ПРОДАЖАМ")
+    print("ТОП-10 МОДЕЛЕЙ ПО ПРОДАЖАМ")
     print("=" * 60)
 
     top_models = df.groupby(['brand', 'model']).agg({
@@ -311,9 +296,9 @@ def eda(df):
     print("Топ-10 моделей по объему продаж:")
     print(top_models)
 
-    # 9. СЕГМЕНТАЦИЯ И КЛАССЫ
+    # СЕГМЕНТАЦИЯ И КЛАССЫ
     print("\n" + "=" * 60)
-    print("9. АНАЛИЗ ПО СЕГМЕНТАМ И КЛАССАМ")
+    print("АНАЛИЗ ПО СЕГМЕНТАМ И КЛАССАМ")
     print("=" * 60)
 
     if 'segment_2013' in df.columns and 'class_2013' in df.columns:
@@ -335,9 +320,9 @@ def eda(df):
         print("\nТоп-10 классов по объему продаж:")
         print(class_stats)
 
-    # 10. АНАЛИЗ КОНКУРЕНТОВ
+    # АНАЛИЗ КОНКУРЕНТОВ
     print("\n" + "=" * 60)
-    print("10. АНАЛИЗ КОНКУРЕНТОВ")
+    print("АНАЛИЗ КОНКУРЕНТОВ")
     print("=" * 60)
 
     top_dealers = df.groupby('dealer_name').agg({
@@ -355,9 +340,9 @@ def eda(df):
         merkur_rank = top_dealers.index.get_loc('Меркур Авто') + 1
         print(f"\n«Меркур Авто» занимает {merkur_rank}-е место среди всех дилеров")
 
-    # 11. ВЫЯВЛЕНИЕ ТОЧЕК РОСТА ДЛЯ «МЕРКУР АВТО»
+    # ВЫЯВЛЕНИЕ ТОЧЕК РОСТА ДЛЯ «МЕРКУР АВТО»
     print("\n" + "=" * 60)
-    print("11. ВЫЯВЛЕНИЕ ТОЧЕК РОСТА")
+    print("ВЫЯВЛЕНИЕ ТОЧЕК РОСТА")
     print("=" * 60)
 
     if len(merkur_data) > 0:
@@ -382,9 +367,9 @@ def eda(df):
             potential_regions = all_regions.head(10).index.difference(merkur_regions.index)
             print(f"\nТоп-10 регионов, где «Меркур Авто» отсутствует: {list(potential_regions)}")
 
-    # 12. СВОДНАЯ СТАТИСТИКА
+    # СВОДНАЯ СТАТИСТИКА
     print("\n" + "=" * 60)
-    print("12. СВОДНАЯ СТАТИСТИКА")
+    print("СВОДНАЯ СТАТИСТИКА")
     print("=" * 60)
 
     summary_stats = pd.DataFrame({
@@ -413,7 +398,3 @@ def eda(df):
     })
 
     print(summary_stats.to_string(index=False))
-
-    print("\n" + "=" * 60)
-    print("АНАЛИЗ ЗАВЕРШЕН")
-    print("=" * 60)

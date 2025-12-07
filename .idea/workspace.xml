@@ -4,10 +4,19 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="End of prepare">
-      <change afterPath="$PROJECT_DIR$/сourse_project/EDA.py" afterDir="false" />
+    <list default="true" id="81276831-b076-47d2-84ee-2ca1eaf50dbf" name="Changes" comment="EDA">
+      <change afterPath="$PROJECT_DIR$/gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/сourse_project/progect.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/EDA.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/EDA.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/dealer_name.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/dealer_name.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/engine_volume.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/engine_volume.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/main.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/processed_data.csv" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/processed_data.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/quan_price_sale.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/quan_price_sale.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/sale_date.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/sale_date.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/transmission.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/transmission.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/type_conversions.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/type_conversions.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/сourse_project/year_of_release.py" beforeDir="false" afterPath="$PROJECT_DIR$/сourse_project/year_of_release.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +56,7 @@
   <component name="PropertiesComponent"><![CDATA[{
   "keyToString": {
     "ModuleVcsDetector.initialDetectionPerformed": "true",
+    "Python.EDA.executor": "Run",
     "Python.func.executor": "Run",
     "Python.func6.executor": "Run",
     "Python.func7.executor": "Run",
@@ -103,7 +113,15 @@
       <option name="project" value="LOCAL" />
       <updated>1765110609004</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="EDA">
+      <option name="closed" value="true" />
+      <created>1765113122271</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1765113122271</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -121,6 +139,7 @@
     <MESSAGE value="First commit" />
     <MESSAGE value="Complete all tasks" />
     <MESSAGE value="End of prepare" />
-    <option name="LAST_COMMIT_MESSAGE" value="End of prepare" />
+    <MESSAGE value="EDA" />
+    <option name="LAST_COMMIT_MESSAGE" value="EDA" />
   </component>
 </project>

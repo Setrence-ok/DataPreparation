@@ -14,7 +14,7 @@ def clean_year_column(df, column_name='year_of_release'):
     # Удаляем все нецифровые символы
     years = years.str.replace(r'[^0-9]', '', regex=True)
 
-    # Преобразуем в число, пустые строки -> NaN
+    # Преобразуем в число, пустые строки
     years_numeric = pd.to_numeric(years, errors='coerce')
 
     # Оставляем только разумные годы (например, 1900-2025)
@@ -23,7 +23,7 @@ def clean_year_column(df, column_name='year_of_release'):
     # Обновляем колонку в датафрейме
     df[column_name] = years_numeric
 
-    # Преобразуем в Int64 (поддерживает NaN)
+    # Преобразуем в Int64
     df[column_name] = df[column_name].astype('Int64')
 
     return df

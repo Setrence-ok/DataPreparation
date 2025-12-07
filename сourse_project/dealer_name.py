@@ -1,35 +1,11 @@
 import pandas as pd
-import numpy as np
-from datetime import datetime
-import pycountry
-
-
-
-def analyze_company_names(df):
-    """
-    Анализирует названия компаний перед очисткой
-    """
-    print("АНАЛИЗ ИСХОДНЫХ ДАННЫХ:")
-
-    if 'dealer_name' in df.columns:
-        unique_names = df['dealer_name'].nunique()
-        total_rows = len(df)
-        print(f"Всего уникальных названий: {unique_names}")
-        print(f"Всего записей: {total_rows}")
-        print(f"Топ-20 самых частых названий:")
-        print(df['dealer_name'].value_counts().head(20))
-
-    else:
-        print("❌ Столбец dealer_name не найден")
-        print(f"Доступные столбцы: {list(df.columns)}")
-
 
 def create_company_mapping():
     """
     Создает mapping для приведения названий к единому формату
     """
     company_mapping = {
-        # Меркур Авто - различные варианты написания
+        # Меркур Авто
         'mercur auto': 'Mercur Auto',
         'mercur autos': 'Mercur Auto',
         'меркур авто': 'Mercur Auto',
@@ -58,7 +34,7 @@ def create_company_mapping():
         # Hino Motors
         'хино моторс казахстан': 'Hino Motors Kazakhstan',
         'hino motors': 'Hino Motors Kazakhstan',
-        'hino motors ': 'Hino Motors Kazakhstan',  # с пробелом в конце
+        'hino motors ': 'Hino Motors Kazakhstan',
 
         # Hyundai
         'hyundai com trans kazakhstan': 'Hyundai Com Trans Kazakhstan',
@@ -84,19 +60,16 @@ def standardize_company_name(name):
     """
     if pd.isna(name):
         return name
-
     original_name = str(name).strip()
     name_lower = original_name.lower().strip()
     company_mapping = create_company_mapping()
     # Проверяем есть ли точное соответствие в mapping
     if name_lower in company_mapping:
         return company_mapping[name_lower]
-
     # Проверяем частичные совпадения
     for key, value in company_mapping.items():
         if key in name_lower:
             return value
-
     # Если не нашли в mapping, возвращаем оригинал с нормальным регистром
     return original_name
 
@@ -106,15 +79,12 @@ def clean_company_names(df):
     Очищает и стандартизирует названия компаний
     """
     if 'dealer_name' not in df.columns:
-        print("❌ Столбец dealer_name не найден")
+        print("Столбец dealer_name не найден")
         return df
-
     # Сохраняем оригинальные названия для анализа
     df['dealer_name_original'] = df['dealer_name']
-
     # Применяем стандартизацию
     df['dealer_name_cleaned'] = df['dealer_name'].apply(standardize_company_name)
-
     # Анализируем результаты
     original_count = df['dealer_name_original'].nunique()
     cleaned_count = df['dealer_name_cleaned'].nunique()
@@ -128,78 +98,15 @@ def clean_company_names(df):
     return df
 
 
-def analyze_changes(df):
-    """
-    Анализирует какие изменения были сделаны
-    """
-    print("\nАНАЛИЗ ИЗМЕНЕНИЙ:")
-
-    # Находим строки где названия изменились
-    changed_names = df[df['dealer_name_original'] != df['dealer_name_cleaned']]
-
-    if not changed_names.empty:
-        print(f"Изменено названий: {len(changed_names)}")
-        print("\nТоп-10 самых частых изменений:")
-        changes = changed_names.groupby(['dealer_name_original', 'dealer_name_cleaned']).size().reset_index(
-            name='count')
-        changes = changes.sort_values('count', ascending=False).head(10)
-        print(changes)
-    else:
-        print("Изменений не обнаружено")
-
-
-def analyze_mercur_auto(df):
-    """
-    Специальный анализ для Меркур Авто
-    """
-    print("\nАНАЛИЗ МЕРКУР АВТО:")
-
-    # Все варианты Меркур Авто
-    mercur_variants = df[df['dealer_name_cleaned'] == 'Mercur Auto']
-    original_variants = mercur_variants['dealer_name_original'].unique()
-
-    print(f"Все варианты Меркур Авто:")
-    for variant in original_variants:
-        count = len(mercur_variants[mercur_variants['dealer_name_original'] == variant])
-        print(f"  '{variant}': {count} записей")
-
-    total_mercur = len(mercur_variants)
-    print(f"Всего записей Меркур Авто после очистки: {total_mercur}")
-
-
 def final_company_cleaning(df):
     """
     Финальные преобразования для столбца компаний
     """
-    print("\nФИНАЛЬНЫЕ ПРЕОБРАЗОВАНИЯ:")
-
     # Заменяем оригинальный столбец очищенным
     df['dealer_name'] = df['dealer_name_cleaned']
-
     # Удаляем временные столбцы
     df = df.drop(columns=['dealer_name_cleaned', 'dealer_name_original'])
 
     print("Очищенные названия компаний:")
     print(df['dealer_name'].value_counts().head(15))
-
     return df
-
-
-def final_company_check(df):
-    """
-    Финальная проверка очистки компаний
-    """
-    print("\nФИНАЛЬНАЯ ПРОВЕРКА:")
-
-    if 'dealer_name' in df.columns:
-        print("✅ Столбец dealer_name очищен успешно")
-        print(f"Уникальных названий: {df['dealer_name'].nunique()}")
-        print(f"Топ-10 дилерских центров:")
-        print(df['dealer_name'].value_counts().head(10))
-
-        # Проверяем что Меркур Авто объединен
-        mercur_count = (df['dealer_name'] == 'Mercur Auto').sum()
-        print(f"\nЗаписей Меркур Авто: {mercur_count}")
-
-    else:
-        print("❌ Столбец dealer_name не найден")

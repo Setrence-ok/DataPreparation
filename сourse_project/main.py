@@ -48,36 +48,20 @@ df = df.rename(columns=column_mapping)
 df = df.dropna(how='all')
 df = df.drop_duplicates()
 
-print("\nПропущенные значения:")
-print(df.isnull().sum())
 df['country_of_origin'] = df['country_of_origin'].apply(country_to_alpha3)
 df['fuel_type'] = df['fuel_type'].apply(encode_fuel_type)
 df['drive_type'] = df['drive_type'].apply(standardize_drive_type)
 
-analyze_numeric_anomalies(df)
 df = clean_numeric_columns(df)
-analyze_after_cleaning(df)
-analyze_special_case(df)
 df = final_numeric_conversions(df)
 
-analyze_date_components(df)
 df = create_sale_date_column(df)
-analyze_created_dates(df)
 df = remove_original_columns(df)
-df = final_date_check(df)
-analyze_company_names(df)
 
 df = clean_company_names(df)
-analyze_changes(df)
-analyze_mercur_auto(df)
 df = final_company_cleaning(df)
-final_company_check(df)
 
-analyze_engine_volume(df)
 df = apply_engine_cleaning(df)
-analyze_cleaning_changes(df)
-print(df.info())
-analyze_special_cases(df)
 df = final_engine_cleaning(df)
 
 df['area'] = df.apply(correct_area, axis=1)
@@ -91,9 +75,8 @@ df = final_data_type_conversions(df)
 df = clean_year_column(df)
 df[['price_USD', 'sale_USD']] = df[['price_USD', 'sale_USD']].round(2)
 df = df.dropna(subset=['year_of_release', 'area', 'engine_volume'])
-
 eda(df)
-
+df = df.drop(columns=['sale_month'], axis=1)
 save(df)
 
 
